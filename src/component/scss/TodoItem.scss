@@ -1,0 +1,62 @@
+@mixin content-center{
+  // 체크표시가 정중앙에 오게끔
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo-list-item{
+  display: flex; //수평 배치로 되게끔
+  align-items: center; //교차축 중앙
+  padding: 12px 0;
+  //background: orange;
+
+  &:hover .remove{  //상위태그가 앞에 들어감
+    display: block;
+  }
+
+  .check-circle{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #9da1a7;
+    font-size: 24px;
+    margin-right: 20px;
+    cursor: pointer;
+    @include content-center;
+
+    &.active{
+      border: 1px solid #38d9a9;
+      color: #38d9a9;
+    }
+  }
+
+  .text{
+    font-size: 21px;
+    //background: tomato;
+    color: #495057;
+    flex: 1;
+
+    &.finish{
+      color: #919396;
+      text-decoration: line-through;
+    }
+  }
+
+  .remove{
+    //background: orange;
+    font-size: 28px;
+    cursor: pointer;
+    color: #f51b4f;
+
+    @include content-center;
+
+    display: none;
+
+    &:hover svg{
+      opacity: 0.8;
+    }
+  }
+
+
+}
