@@ -3,7 +3,7 @@ import {MdDelete, MdDone} from "react-icons/md";
 import cn from 'classnames';
 import './scss/TodoItem.scss';
 
-const TodoItem = ({item}) => {
+const TodoItem = ({item, remove}) => {
 
     const {id, title, done} = item;
 
@@ -13,7 +13,7 @@ const TodoItem = ({item}) => {
                 {done && <MdDone />}
             </div>
             <span className={cn('text', {finish: done})}>{title}</span>
-            <div className={'remove'}>
+            <div className={'remove'} onClick={()=> remove(id)}>
                 <MdDelete />
             </div>
         </li>

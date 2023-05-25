@@ -5,7 +5,7 @@ import cn from 'classnames';
 import './scss/TodoInput.scss'
 
 
-const TodoInput = () => {
+const TodoInput = ({addTodo}) => {
     //입력창 open 여부를 표현하는 상태값
     const [open, setOpen] = useState(false);
 
@@ -23,7 +23,8 @@ const TodoInput = () => {
     const submitHandler = e =>{
         e.preventDefault(); //submit의 페이지 넘어가는 기능 제한
         // console.log('폼 제출');
-        console.log(todoText);
+        // console.log(todoText);
+        addTodo(todoText);
 
         // 입력이 끝나면 입력창 비우기
         setTodoText('');
