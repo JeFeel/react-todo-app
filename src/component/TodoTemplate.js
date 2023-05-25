@@ -67,6 +67,25 @@ const TodoTemplate = () => {
         // 같은 id는 지워지는 효과
     };
 
+    // 할 일 체크 처리 함수
+    const checkTodo = id =>{
+        // console.log(`체크한 Todo id: ${id}`);
+
+        // const copyTodos = [...todos];
+        // for(const cTodo of copyTodos){
+        //     if(cTodo.id===id){
+        //         cTodo.done = !cTodo.done;
+        //     }
+        // }
+        // setTodos(copyTodos);
+
+
+      setTodos(todos.map(todo=>todo.id===id ? {...todo, done: !todo.done} : todo));
+    };
+
+    // 체크가 안된 할일 개수 카운트
+    const countRestTodo = () => todos.filter(todo=> !todo.done).length;
+
 
     useEffect(()=>{
         console.log(todos);
@@ -74,8 +93,11 @@ const TodoTemplate = () => {
 
     return (
         <div className={'TodoTemplate'}>
-            <TodoHeader/>
-            <TodoMain todoList={todos} remove={removeTodo}/>
+            <TodoHeader count={countRestTodo}/>
+            <TodoMain todoList={todos}
+                      remove={removeTodo}
+                      check={checkTodo}
+            />
             <TodoInput addTodo = {addTodo}/>
 
         </div>
